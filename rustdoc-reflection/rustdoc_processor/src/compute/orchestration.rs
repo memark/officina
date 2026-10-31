@@ -326,8 +326,7 @@ fn load_json_docs(
             {
                 return Err(format_err).with_context(|| {
                         format!(
-                            "The JSON docs at `{}` are not in the expected format. \
-                            Are you using the right version of the `nightly` toolchain, `{}`, to generate the JSON docs?",
+                            "The JSON docs at `{}`, generated with the `{}` toolchain, are not in the expected format.",
                             json_path.display(), toolchain_name
                         )
                     });

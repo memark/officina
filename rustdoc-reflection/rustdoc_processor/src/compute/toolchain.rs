@@ -25,12 +25,12 @@ pub(super) fn get_toolchain_crate_docs(
             return match check_format(std::io::Cursor::new(json)) {
                 Err(format_err) => Err(format_err).with_context(|| {
                     format!(
-                        "The JSON docs for {name} are not in the expected format. \
-                        Are you using the right version of the `nightly` toolchain, `{toolchain_name}`, \
-                        to generate the JSON docs?"
+                        "The JSON docs for `{name}`, shipped in the `rust-docs-json` component \
+                        of the `{toolchain_name}` toolchain, are not in the expected format."
                     )
                 }),
-                _ => Err(e).with_context(|| format!("Failed to deserialize the JSON docs for {name}")),
+                _ => Err(e)
+                    .with_context(|| format!("Failed to deserialize the JSON docs for {name}")),
             };
         }
     };
